@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>XYZ Airlines - Home</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<h1>Welcome</h1>
+<h1>Planes</h1>
+
+<table id="PlaneTable">
+    <thead>
+    <th>planeId</th>
+    <th>Fuel</th>
+    <th width="150px">Manage</th>
+    </thead>
+</table>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="/scripts/bootstrap.min.js"></script>
+<script src="/scripts/planes.js"></script>
 </html>
