@@ -26,22 +26,35 @@ function deletePlane(planeID) {
     });
 }
 
+function fly(planeID){
+$.ajax({
+        url: "http://localhost:8080/api/plane/fly/" + planeID,
+        type: "get",
+        success: function(result) {
+            getAllPlanes();
+        }
+    });
+}
+
+function tank(planeID){
+$.ajax({
+        url: "http://localhost:8080/api/plane/tank/" + planeID,
+        type: "get",
+        success: function(result) {
+            getAllPlanes();
+        }
+    });
+}
+
 function postPlane() {
-
-
     // Get values from html.
-    var fuel = $("#inputFuel").val();
-
+    var fuel = $("#inputPlaneFuel").val();
     // Create JS object with data.
     var newPlane = {
         fuel: fuel
     };
-
-
     // Convert JS object to JSON.
     var validJsonTable = JSON.stringify(newPlane);
-
-
     // Post JSON to endpoint.
     $.ajax({
         url: "http://localhost:8080/api/plane/post",
@@ -60,8 +73,6 @@ $(document).ready(function() {
 
     // Modal submit.
     $("#newPlaneForm").on('submit', function(e) {
-
-
         // Post the data from the modal.
         postPlane();
 
@@ -76,7 +87,9 @@ $(document).ready(function() {
             { data: "fuel" },
             {
                 data: function() {
-                    return '<button onclick="deletePlane(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
+                    return '<button onclick="fly(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-primary">Fly</button>'
+                         + '<button onclick="tank(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-primary">Tank</button>'
+                         + '<button onclick="deletePlane(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
                 }
             },
 

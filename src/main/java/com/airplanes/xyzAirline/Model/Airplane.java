@@ -42,4 +42,12 @@ public class Airplane {
             this.fuel -= FLIGHT_FUEL_COST;
         }
     }
+
+    public int getPlaneId() {
+        return planeId;
+    }
+
+    public void setPlaneId(int planeId) {
+        this.planeId = planeId;
+    }
 }
