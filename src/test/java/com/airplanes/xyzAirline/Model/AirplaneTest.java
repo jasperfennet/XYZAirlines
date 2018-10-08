@@ -1,5 +1,7 @@
 package com.airplanes.xyzAirline.Model;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +26,19 @@ class AirplaneTest {
     }
 
     @org.junit.jupiter.api.Test
-    void Tank() {
-        plaines.get(1).Tank();
+    void tank() {
+        plaines.get(1).tank();
         assertEquals(Airplane.MAX_PLANE_FUEL,plaines.get(1).getFuel());
 
-        plaines.get(0).Tank();
+        plaines.get(0).tank();
         assertEquals(2,plaines.get(0).getFuel());
     }
 
+    @Test
+    void fly() throws OutOfFuelException {
+       assertThrows(OutOfFuelException.class ,()->plaines.get(0).fly(),"Not Enough Fuel left to Fly");
+       plaines.get(1).fly();
+       assertEquals(3, plaines.get(1).getFuel());
+
+    }
 }

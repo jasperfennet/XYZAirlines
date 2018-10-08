@@ -16,7 +16,7 @@ function getAllPlanes() {
 function deletePlane(planeID) {
 
     $.ajax({
-        url: "http://localhost:8080/api/plane/delete/" + tableNR,
+        url: "http://localhost:8080/api/plane/delete/" + planeID,
         type: "DELETE",
         success: function(result) {
             // On successful post, reload data to get the added one as well.
@@ -76,7 +76,7 @@ $(document).ready(function() {
             { data: "fuel" },
             {
                 data: function() {
-                    return '<button onclick="deleteTable(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
+                    return '<button onclick="deletePlane(this.parentElement.parentElement.children[0].innerText)" type="button" class="btn btn-danger">Delete</button>'
                 }
             },
 
